@@ -32,3 +32,8 @@ Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
 Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.create');
 Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
 
+//Mata Kuliah
+Route::get('/mata-kuliah', 'MataKuliahController@index')->name('mata-kuliah.index');
+Route::get('/mata-kuliah/create', 'MataKuliahController@create')->name('mata-kuliah.create');
+Route::post('/mata-kuliah', 'MataKuliahController@store')->name('mata-kuliah.store');
+

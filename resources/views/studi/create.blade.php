@@ -13,10 +13,10 @@
                         <input type="text" class="form-control" name="nama" id="nama" value="{{ old('nama') }}" placeholder="Masukkan Nama Studi">
                         @error('nama')<span class="text-danger">{{ $message }}</span>@enderror
                         @csrf
-                        <hr>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('studi.index') }}" class="btn btn-danger">Kembali</a>
                     </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{{ route('studi.index') }}" class="btn btn-danger">Kembali</a>
                 </form>
             </div>
         </div>
