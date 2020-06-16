@@ -37,3 +37,6 @@ Route::get('/mata-kuliah', 'MataKuliahController@index')->name('mata-kuliah.inde
 Route::get('/mata-kuliah/create', 'MataKuliahController@create')->name('mata-kuliah.create');
 Route::post('/mata-kuliah', 'MataKuliahController@store')->name('mata-kuliah.store');
 
+// Wali Kuliah
+Route::get('/wali-kuliah', 'WaliKuliahController@index')->name('wali-kuliah.index');
+

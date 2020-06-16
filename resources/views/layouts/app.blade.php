@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ route('studi.index') }}">Program Studi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Data Kelas</a>
+                            <a class="nav-link" href="{{ route('wali-kuliah.index') }}">Data Kelas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('mata-kuliah.index') }}">Data Mata Kuliah</a>
