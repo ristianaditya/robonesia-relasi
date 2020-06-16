@@ -37,7 +37,7 @@
                             <a class="nav-link" href="#">Data Mahasiswa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Program Studi</a>
+                            <a class="nav-link" href="{{ route('studi.index') }}">Program Studi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Data Kelas</a>
