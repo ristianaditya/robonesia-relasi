@@ -4,24 +4,26 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header bg-primary">Program Studi</div>
+            <div class="card-header bg-danger">Data Mahasiswa</div>
 
             <div class="card-body">
-                <a href="{{ route('studi.create') }}" class="btn btn-outline-primary">Add Data</a>
+                <a href="{{ route('mahasiswa.create') }}" class="btn btn-outline-primary">Add Data</a>
                 <hr>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Program Studi</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Program Studi</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($studi as $data)
+                        @forelse ($mahasiswa as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama }}</td>
+                            <td>{{ $data->program->nama }}</td>
                             <td class="text-center">
                                 <a href="#" class="btn btn-outline-success">Update</a>
                                 <a href="#" class="btn btn-outline-danger">Delete</a>
