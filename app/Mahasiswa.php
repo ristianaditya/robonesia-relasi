@@ -14,4 +14,9 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Studi::class);
     }
+
+    public function pelajaran()
+    {
+        return $this->belongsToMany(Matakuliah::class);
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\MataKuliah;
+use App\Matakuliah;
 use Illuminate\Http\Request;
 use App\Http\Requests\MataKuliahStoreRequest;
 
@@ -10,7 +10,7 @@ class MataKuliahController extends Controller
 {
     public function index()
     {
-        $mataKuliah = MataKuliah::all();
+        $mataKuliah = Matakuliah::all();
         return view('mata_kuliah.index', compact('mataKuliah'));
     }
 
@@ -23,7 +23,7 @@ class MataKuliahController extends Controller
     {
         $data = $request->validated();
 
-        MataKuliah::create([
+        Matakuliah::create([
             'nama' => $data['nama']
         ]);
         return redirect()->route('mata-kuliah.index');

@@ -40,3 +40,9 @@ Route::post('/mata-kuliah', 'MataKuliahController@store')->name('mata-kuliah.sto
 // Wali Kuliah
 Route::get('/wali-kuliah', 'WaliKuliahController@index')->name('wali-kuliah.index');
 
+//Nilai
+Route::get('/nilai', 'NilaiController@index')->name('nilai.index');
+Route::get('/nilai/create', 'NilaiController@create')->name('nilai.create');
+Route::post('/nilai', 'NilaiController@store')->name('nilai.store');
+
+

@@ -46,7 +46,7 @@
                             <a class="nav-link" href="{{ route('mata-kuliah.index') }}">Data Mata Kuliah</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Data Nilai</a>
+                            <a class="nav-link" href="{{ route('nilai.index') }}">Data Nilai</a>
                         </li>
                     </ul>
 

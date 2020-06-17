@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MataKuliahStoreRequest extends FormRequest
+class NilaiStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class MataKuliahStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required|min:3|max:64'
+            'mahasiswa_id' => 'required',
+            'pelajaran_id' => 'required',
+            'nilai' => 'required|numeric'
         ];
     }
 }
