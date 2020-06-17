@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\MahasiswaRepositoryInterface;
 use App\Studi;
 use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MahasiswaStoreRequest;
+use App\Repositories\MahasiswaRepository;
 
 class MahasiswaController extends Controller
 {
+    private $mahasiswaRepository;
+
+    public function __construct(MahasiswaRepositoryInterface $mahasiswaRepo) {
+        $this->mahasiswaRepository = $mahasiswaRepo;
+    }
+
     public function index()
     {
-        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = $this->mahasiswaRepository->index();
         // dd($mahasiswa);
         return view('mahasiswa.index', compact('mahasiswa'));
     }
@@ -27,11 +35,8 @@ class MahasiswaController extends Controller
     {
         $data = $request->validated();
 
-        Mahasiswa::create([
-            'nama' => $data['nama'],
-            'program_id' => $data['program_id'],
-            'user_id' => Auth::id()
-        ]);
+        $this->mahasiswaRepository->store($data);
+
         return redirect()->route('mahasiswa.index');
     }
 }

@@ -15,8 +15,8 @@ class CreateMahasiswasPelajaransTable extends Migration
     {
         Schema::create('mahasiswas_pelajarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mahasiswa_id')->constrained()->unique();
-            $table->foreignId('pelajaran_id')->constrained()->unique();
+            $table->foreignId('mahasiswa_id')->constrained();
+            $table->foreignId('pelajaran_id')->constrained();
             $table->string('nilai');
             $table->timestamps();
         });

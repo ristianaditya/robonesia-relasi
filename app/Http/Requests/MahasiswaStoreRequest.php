@@ -25,7 +25,7 @@ class MahasiswaStoreRequest extends FormRequest
     {
         return [
             'nama' => 'required|min:2|max:64',
-            'program_id' => 'required'
+            'program_id' => 'required|exists:programs,id'
         ];
     }
 }
