@@ -22,31 +22,34 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'studi' , 'as' => 'studi.'], function () {
-    Route::get('/' , 'StudiController@index')->name('index');
-    Route::get('/create' , 'StudiController@create')->name('create');
-    Route::post('/' , 'StudiController@store')->name('store');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'studi' , 'as' => 'studi.'], function () {
+        Route::get('/' , 'StudiController@index')->name('index');
+        Route::get('/create' , 'StudiController@create')->name('create');
+        Route::post('/' , 'StudiController@store')->name('store');
+    });
+    
+    Route::group(['prefix' => 'mahasiswa' , 'as' => 'mahasiswa.'], function () {
+        Route::get('/' , 'MahasiswaController@index')->name('index');
+        Route::get('/create' , 'MahasiswaController@create')->name('create');
+        Route::post('/' , 'MahasiswaController@store')->name('store');
+    });
+    
+    Route::group(['prefix' => 'mata-kuliah' , 'as' => 'mata-kuliah.'], function () {
+        Route::get('/' , 'MataKuliahController@index')->name('index');
+        Route::get('/create' , 'MataKuliahController@create')->name('create');
+        Route::post('/' , 'MataKuliahController@store')->name('store');
+    });
+    
+    // Wali Kuliah
+    Route::get('/wali-kuliah', 'WaliKuliahController@index')->name('wali-kuliah.index');
+    
+    Route::group(['prefix' => 'nilai' , 'as' => 'nilai.'], function () {
+        Route::get('/' , 'NilaiController@index')->name('index');
+        Route::get('/create' , 'NilaiController@create')->name('create');
+        Route::post('/' , 'NilaiController@store')->name('store');
+    });
 });
 
-Route::group(['prefix' => 'mahasiswa' , 'as' => 'mahasiswa.'], function () {
-    Route::get('/' , 'MahasiswaController@index')->name('index');
-    Route::get('/create' , 'MahasiswaController@create')->name('create');
-    Route::post('/' , 'MahasiswaController@store')->name('store');
-});
-
-Route::group(['prefix' => 'mata-kuliah' , 'as' => 'mata-kuliah.'], function () {
-    Route::get('/' , 'MataKuliahController@index')->name('index');
-    Route::get('/create' , 'MataKuliahController@create')->name('create');
-    Route::post('/' , 'MataKuliahController@store')->name('store');
-});
-
-// Wali Kuliah
-Route::get('/wali-kuliah', 'WaliKuliahController@index')->name('wali-kuliah.index');
-
-Route::group(['prefix' => 'nilai' , 'as' => 'nilai.'], function () {
-    Route::get('/' , 'NilaiController@index')->name('index');
-    Route::get('/create' , 'NilaiController@create')->name('create');
-    Route::post('/' , 'NilaiController@store')->name('store');
-});
 
 

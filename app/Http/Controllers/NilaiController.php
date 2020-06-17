@@ -7,9 +7,19 @@ use App\Mahasiswa;
 use App\Matakuliah;
 use Illuminate\Http\Request;
 use App\Http\Requests\NilaiStoreRequest;
+use App\Repositories\MahasiswaRepository;
+use App\Repositories\NilaiRepository;
 
 class NilaiController extends Controller
 {
+    private $mahasiswaRepository;
+    private $nilaiRepository;
+
+    public function __construct(MahasiswaRepository $mahasiswaRepo, NilaiRepository $nilaiRepo) {
+        $this->mahasiswaRepository = $mahasiswaRepo;
+        $this->nilaiRepository = $nilaiRepo;
+    }
+
     public function index()
     {
         // $nilai = Mahasiswa::all();
@@ -19,7 +29,8 @@ class NilaiController extends Controller
     public function create()
     {
         $matakuliah = Matakuliah::all();
-        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = $this->mahasiswaRepository->index();
+
         return view('nilai.create' , compact('matakuliah' , 'mahasiswa'));
     }
 
@@ -27,11 +38,8 @@ class NilaiController extends Controller
     {
         $data = $request->validated();
 
-        Nilai::create([
-            'mahasiswa_id' => $data['mahasiswa_id'],
-            'pelajaran_id' => $data['pelajaran_id'],
-            'nilai' => $data['nilai']
-        ]);
+        $this->nilaiRepository->store($data);
+        
         return redirect()->route('nilai.index');
     }
 }

@@ -19,4 +19,11 @@ class Mahasiswa extends Model
     {
         return $this->belongsToMany(Matakuliah::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
+
+
