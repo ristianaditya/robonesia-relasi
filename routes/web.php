@@ -22,15 +22,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Studi
-Route::get('/studi', 'StudiController@index')->name('studi.index');
-Route::get('/studi/create', 'StudiController@create')->name('studi.create');
-Route::post('/studi', 'StudiController@store')->name('studi.store');
+Route::group(['prefix' => 'studi' , 'as' => 'studi.'], function () {
+    Route::get('/' , 'StudiController@index')->name('index');
+    Route::get('/create' , 'StudiController@create')->name('create');
+    Route::post('/' , 'StudiController@store')->name('store');
+});
 
-// Mahasiswa
-Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
-Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.create');
-Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
+Route::group(['prefix' => 'mahasiswa' , 'as' => 'mahasiswa.'], function () {
+    Route::get('/' , 'MahasiswaController@index')->name('index');
+    Route::get('/create' , 'MahasiswaController@create')->name('create');
+    Route::post('/' , 'MahasiswaController@store')->name('store');
+});
 
 //Mata Kuliah
 Route::get('/mata-kuliah', 'MataKuliahController@index')->name('mata-kuliah.index');
