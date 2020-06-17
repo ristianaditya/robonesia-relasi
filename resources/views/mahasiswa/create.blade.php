@@ -14,6 +14,7 @@
                         @error('nama')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
+                        <label for="program_id">* Bidang Studi :</label>
                         <select class="form-control" name="program_id" id="program_id">
                             <option selected disabled>Pilih :</option>
                             @foreach ($studi as $data)

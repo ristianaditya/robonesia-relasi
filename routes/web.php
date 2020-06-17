@@ -22,27 +22,31 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Studi
-Route::get('/studi', 'StudiController@index')->name('studi.index');
-Route::get('/studi/create', 'StudiController@create')->name('studi.create');
-Route::post('/studi', 'StudiController@store')->name('studi.store');
+Route::group(['prefix' => 'studi' , 'as' => 'studi.'], function () {
+    Route::get('/' , 'StudiController@index')->name('index');
+    Route::get('/create' , 'StudiController@create')->name('create');
+    Route::post('/' , 'StudiController@store')->name('store');
+});
 
-// Mahasiswa
-Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
-Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.create');
-Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
+Route::group(['prefix' => 'mahasiswa' , 'as' => 'mahasiswa.'], function () {
+    Route::get('/' , 'MahasiswaController@index')->name('index');
+    Route::get('/create' , 'MahasiswaController@create')->name('create');
+    Route::post('/' , 'MahasiswaController@store')->name('store');
+});
 
-//Mata Kuliah
-Route::get('/mata-kuliah', 'MataKuliahController@index')->name('mata-kuliah.index');
-Route::get('/mata-kuliah/create', 'MataKuliahController@create')->name('mata-kuliah.create');
-Route::post('/mata-kuliah', 'MataKuliahController@store')->name('mata-kuliah.store');
+Route::group(['prefix' => 'mata-kuliah' , 'as' => 'mata-kuliah.'], function () {
+    Route::get('/' , 'MataKuliahController@index')->name('index');
+    Route::get('/create' , 'MataKuliahController@create')->name('create');
+    Route::post('/' , 'MataKuliahController@store')->name('store');
+});
 
 // Wali Kuliah
 Route::get('/wali-kuliah', 'WaliKuliahController@index')->name('wali-kuliah.index');
 
-//Nilai
-Route::get('/nilai', 'NilaiController@index')->name('nilai.index');
-Route::get('/nilai/create', 'NilaiController@create')->name('nilai.create');
-Route::post('/nilai', 'NilaiController@store')->name('nilai.store');
+Route::group(['prefix' => 'nilai' , 'as' => 'nilai.'], function () {
+    Route::get('/' , 'NilaiController@index')->name('index');
+    Route::get('/create' , 'NilaiController@create')->name('create');
+    Route::post('/' , 'NilaiController@store')->name('store');
+});
 
 
